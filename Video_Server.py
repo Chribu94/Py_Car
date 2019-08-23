@@ -33,7 +33,13 @@ class VideoStreamingTest(object):
                     jpg = stream_bytes[first:last + 2]
                     stream_bytes = stream_bytes[last + 2:]
                     image = cv2.imdecode(np.frombuffer(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
-                    cv2.imshow('image', image)
+                    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                    blurred = cv2.GaussianBlur(gray, (9, 9), 1)
+                    edged = cv2.Canny(blurred, 40, 40)
+                    cv2.imshow('Raw', image)
+                    cv2.imshow('Blurred', blurred)
+                    cv2.imshow('Edged', edged)
+
 
                     if cv2.waitKey(1) & 0xFF == ord('q'):
                         break
