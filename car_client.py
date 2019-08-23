@@ -49,11 +49,11 @@ client_socket.connect((my_server, 8000))
 connection = client_socket.makefile('wb')
 try:
     output = SplitFrames(connection)
-    with picamera.PiCamera(resolution=res, framerate=30) as camera:
+    with picamera.PiCamera(resolution=res, framerate=25) as camera:
         time.sleep(2)
         start = time.time()
-        camera.start_recording(output, format='.h264')
-        camera.wait_recording(1)
+        camera.start_recording(output, format='mjpeg')
+        #camera.wait_recording(1)
         camera.stop_recording()
         # Write the terminating 0-length to the connection to let the
         # server know we're done
