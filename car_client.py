@@ -43,7 +43,7 @@ class SplitFrames(object):
 prepServo()
 sleep(1)
 my_server = '192.168.178.78'
-res = (640, 320)
+res = (400, 400)
 client_socket = socket.socket()
 client_socket.connect((my_server, 8000))
 connection = client_socket.makefile('wb')
