@@ -2,6 +2,7 @@ from imutils.video import VideoStream
 import imagezmq
 import socket
 import time
+import cv2
 
 def prepServo(angle=40, pin=16):
     import RPi.GPIO as GPIO
@@ -32,7 +33,4 @@ time.sleep(1.0)
 while True:
     frame = vs.read()
     sender.send_image(rpiName, frame)
-    cv2.imshow("Raw", frame)
     
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
