@@ -52,8 +52,8 @@ try:
     with picamera.PiCamera(resolution=res, framerate=30) as camera:
         time.sleep(2)
         start = time.time()
-        camera.start_recording(output, format='mjpeg')
-        camera.wait_recording(9999)
+        camera.start_recording(output, format='.h264')
+        camera.wait_recording(1)
         camera.stop_recording()
         # Write the terminating 0-length to the connection to let the
         # server know we're done
