@@ -4,6 +4,21 @@ import struct
 import time
 import picamera
 import sys
+from time import sleep()
+
+def prepServo(angle=40, pin=16):
+    import RPi.GPIO as GPIO
+    from time import sleep
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(16, GPIO.OUT)
+    servo = GPIO.PWM(16, 50)
+    servo.start(0)
+    duty = angle / 18 + 2
+    GPIO.output(pin, True)
+    servo.ChangeDutyCycle(duty)
+    sleep(0.3)
+    GPIO.output(pin, False)
+    servo.ChangeDutyCycle(0)
 
 class SplitFrames(object):
     def __init__(self, connection):
@@ -25,6 +40,8 @@ class SplitFrames(object):
                 self.stream.seek(0)
         self.stream.write(buf)
 
+prepServo()
+sleep(1)
 my_server = '192.168.176.76'
 res = (1280, 720)
 client_socket = socket.socket()
