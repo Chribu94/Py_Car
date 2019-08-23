@@ -36,9 +36,10 @@ class VideoStreamingTest(object):
                     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
                     blurred = cv2.GaussianBlur(gray, (9, 9), 1)
                     edged = cv2.Canny(blurred, 40, 40)
-                    cv2.imshow('Raw', image)
-                    cv2.imshow('Blurred', blurred)
-                    cv2.imshow('Edged', edged)
+                    shape = (image.shape[1]*2,image.shape[0]*2)
+                    cv2.imshow('Raw', cv2.resize(image, shape))
+                    cv2.imshow('Blurred', cv2.resize(blurred, shape))
+                    cv2.imshow('Edged', cv2.resize(edged, shape))
 
 
                     if cv2.waitKey(1) & 0xFF == ord('q'):
