@@ -53,7 +53,7 @@ try:
         time.sleep(2)
         start = time.time()
         camera.start_recording(output, format='mjpeg')
-        camera.wait_recording(sys.maxint)
+        camera.wait_recording(9999)
         camera.stop_recording()
         # Write the terminating 0-length to the connection to let the
         # server know we're done
