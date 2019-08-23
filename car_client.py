@@ -4,7 +4,7 @@ import struct
 import time
 import picamera
 import sys
-from time import sleep()
+from time import sleep
 
 def prepServo(angle=40, pin=16):
     import RPi.GPIO as GPIO
