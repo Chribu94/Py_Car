@@ -20,13 +20,13 @@ def prepServo(angle=40, pin=16):
 
 
 
-prepServo(50)
+prepServo()
 time.sleep(1)
 my_server = '192.168.178.78'
 sender = imagezmq.ImageSender(connect_to="tcp://192.168.178.78:5555")
 
 rpiName = socket.gethostname()
-vs = VideoStream(usePiCamera=True, resolution=(400, 320), framerate=20).start()
+vs = VideoStream(usePiCamera=True, resolution=(200, 160), framerate=20).start()
 
 time.sleep(1)
  
